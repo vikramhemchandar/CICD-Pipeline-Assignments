@@ -2,34 +2,27 @@ pipeline {
     agent any
 
     environment {
-        VENV = 'venv'
+        PYTHON_APP = "Flask_App.py"
     }
 
     stages {
-
-        stage('Checkout') {
-            steps {
-                git branch: 'jenkins',
-                    url: 'https://github.com/vikramhemchandar/CICD-Pipeline-Assignments.git'
-            }
-        }
-
         stage('Build') {
             steps {
+                echo 'Setting up virtual environment and installing dependencies...'
                 sh '''
-                python3 -m venv $VENV
-                . $VENV/bin/activate
-                pip install --upgrade pip
-                pip install -r Requirements.txt
+                    python3 -m venv venv
+                    . venv/bin/activate
+                    pip install -r requirements.txt
                 '''
             }
         }
 
         stage('Test') {
             steps {
+                echo 'Running Unit Tests...'
                 sh '''
-                . $VENV/bin/activate
-                pytest
+                    . venv/bin/activate
+                    pytest tests/
                 '''
             }
         }
@@ -39,26 +32,28 @@ pipeline {
                 branch 'main'
             }
             steps {
-                sh '''
-                echo "Deploying to staging..."
-                # Example deployment
-                # Could be systemd, docker, or simple copy
-                '''
+                echo 'Deploying to Staging Environment...'
+                // For a Python app, this might be a script to restart a service 
+                // or a 'kubectl apply' command for your Kubernetes configs.
+                sh './deploy_staging.sh'
             }
         }
     }
 
     // post {
     //     success {
-    //         mail to: 'vikramhemchandar@gmail.com',
-    //              subject: 'Jenkins Build SUCCESS',
-    //              body: "Build ${env.BUILD_NUMBER} succeeded."
+    //         emailext (
+    //             subject: "SUCCESS: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+    //             body: "Check console output at ${env.BUILD_URL}",
+    //             to: "your-email@example.com"
+    //         )
     //     }
-
     //     failure {
-    //         mail to: 'vikramhemchandar@gmail.com',
-    //              subject: 'Jenkins Build FAILED',
-    //              body: "Build ${env.BUILD_NUMBER} failed. Check Jenkins."
+    //         emailext (
+    //             subject: "FAILURE: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+    //             body: "Build failed. Check console output at ${env.BUILD_URL}",
+    //             to: "your-email@example.com"
+    //         )
     //     }
     // }
 }
