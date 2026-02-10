@@ -27,9 +27,11 @@ pipeline {
         }
 
         stage('Deploy') {
-            // when {
-            //     branch '*/jenkins'
-            // }
+            when {
+                echo 'Inside when loop'
+                branch 'jenkins'
+                echo 'Exiting when loop'
+            }
             steps {
                 echo 'Deploying to Staging Environment...'
                 // For a Python app, this might be a script to restart a service 
