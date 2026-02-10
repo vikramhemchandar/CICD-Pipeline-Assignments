@@ -33,7 +33,7 @@ pipeline {
                 sh '''
                 python3 app.py &
                 sleep 5 
-                curl http://localhost:5000/
+                curl http://localhost:5001/
                 '''
             }
         }
