@@ -9,8 +9,8 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                git branch: 'main',
-                    url: 'https://github.com/<YOUR_USERNAME>/flasky.git'
+                git branch: 'jenkins',
+                    url: 'https://github.com/vikramhemchandar/CICD-Pipeline-Assignments.git'
             }
         }
 
@@ -20,7 +20,7 @@ pipeline {
                 python3 -m venv $VENV
                 . $VENV/bin/activate
                 pip install --upgrade pip
-                pip install -r requirements.txt
+                pip install -r Requirements.txt
                 '''
             }
         }
@@ -50,13 +50,13 @@ pipeline {
 
     post {
         success {
-            mail to: 'you@example.com',
+            mail to: 'vikramhemchandar@gmail.com',
                  subject: 'Jenkins Build SUCCESS',
                  body: "Build ${env.BUILD_NUMBER} succeeded."
         }
 
         failure {
-            mail to: 'you@example.com',
+            mail to: 'vikramhemchandar@gmail.com',
                  subject: 'Jenkins Build FAILED',
                  body: "Build ${env.BUILD_NUMBER} failed. Check Jenkins."
         }
