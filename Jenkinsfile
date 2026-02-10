@@ -38,7 +38,7 @@ pipeline {
             }
         }
     }
-
+//Adding email section
     post {
         success {
             emailext (
