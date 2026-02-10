@@ -28,14 +28,10 @@ pipeline {
 
         stage('Deploy') {
             when {
-                echo 'Inside when loop'
                 branch 'jenkins'
-                echo 'Exiting when loop'
             }
             steps {
                 echo 'Deploying to Staging Environment...'
-                // For a Python app, this might be a script to restart a service 
-                // or a 'kubectl apply' command for your Kubernetes configs.
                 sh 'curl http://localhost:5000/'
             }
         }
