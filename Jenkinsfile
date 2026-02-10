@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        PYTHON_APP = "Flask_App.py"
+        PYTHON_APP = "app.py"
     }
 
     stages {
@@ -22,7 +22,7 @@ pipeline {
                 echo 'Running Unit Tests...'
                 sh '''
                     . venv/bin/activate
-                    pytest tests/
+                    pytest
                 '''
             }
         }
