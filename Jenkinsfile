@@ -1,14 +1,9 @@
 pipeline {
     agent any
 
-    triggers(
-        githhubPush()
-    )
-    environment {
-        PYTHON_APP = "app.py"
+    triggers {
+        githubPush()
     }
-
-
     stages {
         stage('Build') {
             steps {
@@ -39,7 +34,7 @@ pipeline {
                 echo 'Deploying to Staging Environment...'
                 // For a Python app, this might be a script to restart a service 
                 // or a 'kubectl apply' command for your Kubernetes configs.
-                sh 'python3 app.py'
+                sh 'curl http://localhost:5000/'
             }
         }
     }
