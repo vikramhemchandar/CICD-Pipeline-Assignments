@@ -48,17 +48,17 @@ pipeline {
         }
     }
 
-    post {
-        success {
-            mail to: 'vikramhemchandar@gmail.com',
-                 subject: 'Jenkins Build SUCCESS',
-                 body: "Build ${env.BUILD_NUMBER} succeeded."
-        }
+    // post {
+    //     success {
+    //         mail to: 'vikramhemchandar@gmail.com',
+    //              subject: 'Jenkins Build SUCCESS',
+    //              body: "Build ${env.BUILD_NUMBER} succeeded."
+    //     }
 
-        failure {
-            mail to: 'vikramhemchandar@gmail.com',
-                 subject: 'Jenkins Build FAILED',
-                 body: "Build ${env.BUILD_NUMBER} failed. Check Jenkins."
-        }
-    }
+    //     failure {
+    //         mail to: 'vikramhemchandar@gmail.com',
+    //              subject: 'Jenkins Build FAILED',
+    //              body: "Build ${env.BUILD_NUMBER} failed. Check Jenkins."
+    //     }
+    // }
 }
