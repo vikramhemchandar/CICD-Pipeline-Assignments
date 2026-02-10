@@ -19,6 +19,7 @@ pipeline {
 
         stage('Python Debug') {
             steps {
+                echo 'Python Debug with versions'
                 sh '''
                     which python || true
                     which python3 || true
