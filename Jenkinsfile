@@ -12,7 +12,20 @@ pipeline {
                 sh '''
                     python3 -m venv venv
                     . venv/bin/activate
-                    pip install -r Requirements.txt
+                    pip install -r requirements.txt
+                '''
+            }
+        }
+
+        stage('Python Debug') {
+            steps {
+                sh '''
+                    which python || true
+                    which python3 || true
+                    python --version || true
+                    python3 --version || true
+                    pip --version || true
+                    pip3 --version || true
                 '''
             }
         }
@@ -38,7 +51,8 @@ pipeline {
             steps {
                 echo 'Deploying to Staging Environment...'
                 sh '''
-                python3 app.py
+                python3 app.py &
+                sleep 5 
                 curl http://localhost:5000/
                 '''
             }
