@@ -13,7 +13,7 @@ pipeline {
                     python3 -m venv venv
                     . venv/bin/activate
                     pip install -r Requirements.txt
-                    pip3 install flask
+                    python -c "import flask; print(flask.__version__)"
                 '''
             }
         }
@@ -22,13 +22,13 @@ pipeline {
             steps {
                 echo 'Python Debug with versions'
                 sh '''
-                    which python || true
-                    which python3 || true
-                    python --version || true
-                    python3 --version || true
-                    pip --version || true
-                    pip3 --version || true
-                    flask --version || true
+                    which python
+                    which python3 
+                    python --version
+                    python3 --version
+                    pip --version
+                    pip3 --version
+                    flask --version
                 '''
             }
         }
