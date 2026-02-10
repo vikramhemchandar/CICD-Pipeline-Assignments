@@ -10,9 +10,9 @@ pipeline {
             steps {
                 echo 'Setting up virtual environment and installing dependencies...'
                 sh '''
-                    sudo python3 -m venv venv
+                    python3 -m venv venv
                     . venv/bin/activate
-                    sudo pip install -r Requirements.txt
+                    pip install -r Requirements.txt
                 '''
             }
         }
