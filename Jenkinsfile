@@ -27,6 +27,7 @@ pipeline {
                     python3 --version || true
                     pip --version || true
                     pip3 --version || true
+                    flask --version || true
                 '''
             }
         }
