@@ -5,9 +5,6 @@ pipeline {
         githubPush()
     }
 
-    environment{
-        env.BRANCH_NAME='jenkins'
-    }
     stages {
         stage('Build') {
             steps {
