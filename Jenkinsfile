@@ -22,12 +22,10 @@ pipeline {
             steps {
                 echo 'Python Debug with versions'
                 sh '''
+                    . venv/bin/activate
                     which python
-                    which python3 
                     python --version
-                    python3 --version
                     pip --version
-                    pip3 --version
                     flask --version
                 '''
             }
