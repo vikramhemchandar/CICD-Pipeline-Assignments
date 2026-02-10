@@ -39,7 +39,12 @@ pipeline {
 
         stage('Deploy') {
             when {
-                branch 'jenkins'
+                expression {
+                    sh(
+                        script: 'git rev-parse --abbrev-ref HEAD',
+                        returnStdout: true
+                    ).trim() == 'jenkins'
+                }
             }
             steps {
                 echo 'Deploying to Staging Environment...'
