@@ -26,6 +26,13 @@ pipeline {
             }
         }
 
+        stage('Debug Branch') {
+            steps {
+                echo "BRANCH_NAME = ${env.BRANCH_NAME}"
+                sh 'git branch --show-current || true'
+            }
+        }
+
         stage('Deploy') {
             when {
                 branch 'jenkins'
