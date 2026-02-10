@@ -13,20 +13,6 @@ pipeline {
                     python3 -m venv venv
                     . venv/bin/activate
                     pip install -r Requirements.txt
-                    ./venv/bin/flask --version
-                '''
-            }
-        }
-
-        stage('Python Debug') {
-            steps {
-                echo 'Python Debug with versions'
-                sh '''
-                    . venv/bin/activate
-                    which python
-                    python --version
-                    pip --version
-                    flask --version
                 '''
             }
         }
