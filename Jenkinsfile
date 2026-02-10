@@ -1,9 +1,13 @@
 pipeline {
     agent any
 
+    triggers(
+        githhubPush()
+    )
     environment {
         PYTHON_APP = "app.py"
     }
+
 
     stages {
         stage('Build') {
@@ -35,7 +39,7 @@ pipeline {
                 echo 'Deploying to Staging Environment...'
                 // For a Python app, this might be a script to restart a service 
                 // or a 'kubectl apply' command for your Kubernetes configs.
-                sh './deploy_staging.sh'
+                sh 'python3 app.py'
             }
         }
     }
