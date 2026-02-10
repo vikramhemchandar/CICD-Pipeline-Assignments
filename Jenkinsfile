@@ -84,9 +84,9 @@ pipeline {
                 mimeType: 'text/html'
             )
         }
-    }
 
-    always {
-        echo 'Pipeline execution completed.'
+        always {
+            echo 'Pipeline execution completed.'
+        }
     }
 }
