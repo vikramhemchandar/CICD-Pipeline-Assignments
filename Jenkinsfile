@@ -35,14 +35,6 @@ pipeline {
         }
 
         stage('Deploy') {
-            when {
-                expression {
-                    sh(
-                        script: 'git rev-parse --abbrev-ref HEAD',
-                        returnStdout: true
-                    ).trim() == 'jenkins'
-                }
-            }
             steps {
                 echo 'Deploying to Staging Environment...'
                 sh 'curl http://localhost:5000/'
