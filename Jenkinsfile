@@ -28,7 +28,7 @@ pipeline {
 
         stage('Deploy') {
             when {
-                branch 'jenkins'
+                branch '*/jenkins'
             }
             steps {
                 echo 'Deploying to Staging Environment...'
