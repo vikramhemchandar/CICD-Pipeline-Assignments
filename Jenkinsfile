@@ -37,7 +37,10 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying to Staging Environment...'
-                sh 'curl http://localhost:5000/'
+                sh '''
+                python3 app.py
+                curl http://localhost:5000/
+                '''
             }
         }
     }
