@@ -39,20 +39,49 @@ pipeline {
         }
     }
 
-    post {
-        success {
-            emailext (
-                subject: "SUCCESS: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-                body: "Check console output at ${env.BUILD_URL}",
-                to: "vikramhemchandar@gmail.com"
-            )
-        }
-        failure {
-            emailext (
-                subject: "FAILURE: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-                body: "Build failed. Check console output at ${env.BUILD_URL}",
-                to: "vikramhemchandar@gmail.com"
-            )
-        }
-    }
+        post {
+            success {
+                emailext (
+                    subject: "✅ SUCCESS: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+                    body: """
+                        <html>
+                        <body>
+                            <h2 style="color: green;">Build Successful! ✅</h2>
+                            <p><strong>Job Name:</strong> ${env.JOB_NAME}</p>
+                            <p><strong>Build Number:</strong> ${env.BUILD_NUMBER}</p>
+                            <p><strong>Build Status:</strong> SUCCESS</p>
+                            <p><strong>Console Output:</strong> <a href="${env.BUILD_URL}console">${env.BUILD_URL}console</a></p>
+                            <p><strong>Build URL:</strong> <a href="${env.BUILD_URL}">${env.BUILD_URL}</a></p>
+                        </body>
+                        </html>
+                    """,
+                    to: 'vikramhemchandar@gmail.com',
+                    from: 'vikramhemchandar@gmail.com',
+                    replyTo: 'vikramhemchandar@gmail.com',
+                    mimeType: 'text/html'
+                )
+            }
+            
+            failure {
+                emailext (
+                    subject: "❌ FAILURE: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+                    body: """
+                        <html>
+                        <body>
+                            <h2 style="color: red;">Build Failed! ❌</h2>
+                            <p><strong>Job Name:</strong> ${env.JOB_NAME}</p>
+                            <p><strong>Build Number:</strong> ${env.BUILD_NUMBER}</p>
+                            <p><strong>Build Status:</strong> FAILURE</p>
+                            <p><strong>Console Output:</strong> <a href="${env.BUILD_URL}console">${env.BUILD_URL}console</a></p>
+                            <p><strong>Build URL:</strong> <a href="${env.BUILD_URL}">${env.BUILD_URL}</a></p>
+                            <p>Please check the console output for error details.</p>
+                        </body>
+                        </html>
+                    """,
+                    to: 'vikramhemchandar@gmail.com',
+                    from: 'vikramhemchandar@gmail.com',
+                    replyTo: 'vikramhemchandar@gmail.com',
+                    mimeType: 'text/html'
+                )
+            }
 }
