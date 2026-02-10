@@ -27,13 +27,6 @@ pipeline {
             }
         }
 
-        stage('Debug Branch') {
-            steps {
-                echo "BRANCH_NAME = ${env.BRANCH_NAME}"
-                sh 'git branch --show-current || true'
-            }
-        }
-
         stage('Deploy') {
             steps {
                 echo 'Deploying to Staging Environment...'
@@ -46,14 +39,14 @@ pipeline {
         }
     }
 
-    // post {
-    //     success {.  
-    //         emailext (
-    //             subject: "SUCCESS: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-    //             body: "Check console output at ${env.BUILD_URL}",
-    //             to: "your-email@example.com"
-    //         )
-    //     }
+    post {
+        success {.  
+            emailext (
+                subject: "SUCCESS: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+                body: "Check console output at ${env.BUILD_URL}",
+                to: "vikramhemchandar@gmail.com"
+            )
+        }
     //     failure {
     //         emailext (
     //             subject: "FAILURE: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
