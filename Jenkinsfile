@@ -48,12 +48,12 @@ pipeline {
             )
         }
     }
-    //     failure {
-    //         emailext (
-    //             subject: "FAILURE: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
-    //             body: "Build failed. Check console output at ${env.BUILD_URL}",
-    //             to: "your-email@example.com"
-    //         )
-    //     }
-    // }
+        failure {
+            emailext (
+                subject: "FAILURE: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+                body: "Build failed. Check console output at ${env.BUILD_URL}",
+                to: "vikramhemchandar@gmail.com"
+            )
+        }
+    }
 }
