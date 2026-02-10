@@ -47,7 +47,6 @@ pipeline {
                 to: "vikramhemchandar@gmail.com"
             )
         }
-    }
         failure {
             emailext (
                 subject: "FAILURE: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
