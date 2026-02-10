@@ -13,7 +13,7 @@ pipeline {
                     python3 -m venv venv
                     . venv/bin/activate
                     pip install -r Requirements.txt
-                    python -c "import flask; print(flask.__version__)"
+                    ./venv/bin/flask --version
                 '''
             }
         }
