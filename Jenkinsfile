@@ -86,7 +86,7 @@ pipeline {
         }
     }
 
-always {
+    always {
         echo 'Pipeline execution completed.'
     }
 }
