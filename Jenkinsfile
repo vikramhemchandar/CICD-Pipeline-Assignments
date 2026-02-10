@@ -40,7 +40,7 @@ pipeline {
     }
 
     post {
-        success {.  
+        success {
             emailext (
                 subject: "SUCCESS: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
                 body: "Check console output at ${env.BUILD_URL}",
