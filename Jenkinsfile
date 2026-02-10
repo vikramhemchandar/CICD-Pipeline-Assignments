@@ -27,9 +27,9 @@ pipeline {
         }
 
         stage('Deploy') {
-            when {
-                branch '*/jenkins'
-            }
+            // when {
+            //     branch '*/jenkins'
+            // }
             steps {
                 echo 'Deploying to Staging Environment...'
                 // For a Python app, this might be a script to restart a service 
