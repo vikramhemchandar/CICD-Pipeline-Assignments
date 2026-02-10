@@ -10,6 +10,8 @@ def create_app():
     @app.route('/health')
     def health():
         return jsonify({"status": "healthy"}), 200
+    
+    return app
 
 if __name__ == '__main__':
     app = create_app()
