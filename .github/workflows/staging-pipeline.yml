@@ -15,7 +15,7 @@ jobs:
 
       # Run tests inside the Docker container
       - name: Run tests with PyTest
-        run: docker run --rm flask-app:test pytest
+        run: docker run --rm flask-app:test python -m pytest -v
 
       # Login to Docker Hub (only after tests pass)
       - name: Login to Docker Hub
