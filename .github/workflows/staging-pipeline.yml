@@ -26,8 +26,7 @@ jobs:
 
 #run the tests using pytest
       - name: Run tests with PyTest
-        run: |
-          python -m pytest
+        run: pytest
 
   deploy:
     runs-on: ubuntu-latest
