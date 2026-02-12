@@ -23,9 +23,11 @@ jobs:
           context: .
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/flask-app:latest
-      
+
+#run the tests using pytest
       - name: Run tests with PyTest
-        run: pytest
+        run: |
+          python -m pytest
 
   deploy:
     runs-on: ubuntu-latest
