@@ -9,15 +9,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-#install dependencies
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install pytest
-          pip install flask
-          echo "=== Dependencies installed ==="
-          pytest --version
-          flask --version
 
 #login to docker hub 
       - name: Login to Docker Hub
@@ -33,6 +24,14 @@ jobs:
           context: .
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/flask-app:latest
+
+#install dependencies
+      - name: Install dependencies
+        run: |
+          echo "=== Dependencies installed ==="
+          pytest --version
+          flask --version
+
 
 #run the tests using pytest
       - name: Run tests with PyTest
