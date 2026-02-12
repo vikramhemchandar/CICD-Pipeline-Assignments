@@ -9,15 +9,22 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # Build the Docker image first (don't push yet)
+      - name: Build Docker image
+        run: docker build -t flask-app:test .
 
-#login to docker hub 
+      # Run tests inside the Docker container
+      - name: Run tests with PyTest
+        run: docker run --rm flask-app:test pytest
+
+      # Login to Docker Hub (only after tests pass)
       - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-#push the image to docker hub
+      # Push the image to Docker Hub
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
@@ -25,23 +32,10 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/flask-app:latest
 
-#install dependencies
-      - name: Install dependencies
-        run: |
-          echo "=== Dependencies installed ==="
-          pytest --version
-          flask --version
-
-
-#run the tests using pytest
-      - name: Run tests with PyTest
-        run: pytest
-
   deploy:
     runs-on: ubuntu-latest
     needs: build
 
-#pull the docker image and deploy using appleboy
     steps:
       - name: Deploy to EC2
         uses: appleboy/ssh-action@v1.0.3
@@ -54,4 +48,3 @@ jobs:
             docker stop flask-app || true
             docker rm flask-app || true
             docker run -d --name flask-app -p 80:5000 ${{ secrets.DOCKER_USERNAME }}/flask-app:latest
-
