@@ -4,7 +4,7 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
-RUN pytest
+RUN python -m pytest --version
 
 # Stage 2: Production
 FROM python:3.12-slim
