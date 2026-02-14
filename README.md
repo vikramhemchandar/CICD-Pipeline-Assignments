@@ -68,13 +68,13 @@ Go to **Manage Jenkins** > **Plugins** and ensure the following are installed:
 -  Go to Manage Jenkins -> System -> Email Notifications
 <kbd><img width="707" height="585" alt="image" src="https://github.com/user-attachments/assets/c24e7676-c871-4b05-9eac-6886de27fe90" /></kbd>
 <kbd><img width="1071" height="1204" alt="image" src="https://github.com/user-attachments/assets/6059b5b8-c687-4cb6-a9ae-a7ed6b146429" /></kbd>
--  Test Email notification<br>
+-  Test Email notification
 <kbd><img width="947" height="338" alt="image" src="https://github.com/user-attachments/assets/d50ce272-b185-459f-9a36-aa84762b36c5" /></kbd>
 -  Configure Extend email notification
 <kbd><img width="707" height="585" alt="image" src="https://github.com/user-attachments/assets/23a32e26-634e-4aa1-8941-f34237d215c8" />
-<img width="1075" height="525" alt="image" src="https://github.com/user-attachments/assets/2ae122a4-d3a5-45b8-a6b0-8ddc2d33b94b" /></kbd><br>
+<img width="1075" height="525" alt="image" src="https://github.com/user-attachments/assets/2ae122a4-d3a5-45b8-a6b0-8ddc2d33b94b" /></kbd>
 -  Add the email and password
-<kbd><img width="807" height="858" alt="image" src="https://github.com/user-attachments/assets/b5be46c4-63b8-4cab-b7b7-771cd1bf273d" /></kbd><br>
+<kbd><img width="807" height="858" alt="image" src="https://github.com/user-attachments/assets/b5be46c4-63b8-4cab-b7b7-771cd1bf273d" /></kbd>
  
 ## Pipeline Configuration ([Jenkinsfile])
 
@@ -170,7 +170,7 @@ Runs the unit tests using `pytest`.
 . venv/bin/activate
 pytest
 ```
-**Output:**
+**Output:** <br>
 <kbd><img width="754" height="224" alt="image" src="https://github.com/user-attachments/assets/884588f0-d4d9-4611-bb08-29b6fb59b6d7" /></kbd>
 
 #### 3. Deploy
