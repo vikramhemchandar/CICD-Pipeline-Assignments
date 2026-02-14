@@ -1,5 +1,5 @@
 # CI/CD Pipeline Implementation for Jenkins & GitHub Actions
-This repository contains the CI/CD pipeline implementations for a simple Flask application. The pipelines are separated into different branches, each serving a specific purpose.
+ This repository contains the CI/CD pipeline implementations for a simple Flask application. The pipelines are separated into different branches, each serving a specific purpose.
 ## Branch Overview
 | Branch Name | Description | Goal |
 | :--- | :--- | :--- |
